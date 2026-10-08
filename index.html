@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elivel & Samuel - Invitación de Boda</title>
+    <link rel="preload" as="image" href="foto0.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="CCSB.css?v=19">
+        <style>
+        /* Carrusel: 3 imágenes simultáneamente con foto central destacada */
+        .carousel-track-container {
+            overflow: hidden;
+            width: 100%;
+            position: relative;
+        }
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease;
+            width: 100%;
+            overflow: visible;
+        }
+        .carousel-item {
+            flex: 0 0 33.333%; /* 3 imágenes por fila en PC */
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0; /* usamos gap del track para separación */
+        }
+        .carousel-item img {
+            max-width: 100%;
+            height: 100% !important;
+            object-fit: cover;
+            border-radius: 0;
+            box-shadow: 0 10px 24px rgba(110,124,78,0.35);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        /* Hacer las fotos visualmente menos anchas manteniendo 3 por fila */
+        .framed-photo {
+            width: 90% !important;
+            height: 100% !important;
+            margin: 0 auto;
+            object-fit: cover !important;
+            background: #6E7C4E !important;
+            border: 10px solid #6E7C4E !important;
+            border-bottom-width: 38px !important;
+        }
+
+        @media (min-width: 769px) {
+            .carousel-item.is-center .framed-photo {
+                transform: scale(1.12) rotate(-0.2deg);
+                box-shadow: 0 34px 68px rgba(110,124,78,0.45);
+            }
+        }
+        
+        /* Mobile: una imagen centrada */
+        @media (max-width: 768px) {
+            .carousel-item {
+                flex: 0 0 100% !important; /* 1 imagen por vista en móvil */
+                padding: 0 6px !important;
+                height: 380px !important;
+                display: flex !important;
+                justify-content: center !important;
+                align-items: center !important;
+            }
+            .carousel-item img {
+                width: 100% !important;
+                height: 100% !important;
+                max-height: 380px !important;
+                object-fit: cover !important;
+                transform: none !important;
+            }
+            .framed-photo {
+                width: 100% !important;
+                border-width: 6px !important;
+                border-bottom-width: 20px !important;
+            }
+            
+            .carousel-track-container {
+                height: auto !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .carousel-item img {
+                max-height: 320px !important;
+                height: 300px !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                object-fit: cover !important;
+                border-radius: 0;
+                transform: none !important;
+            }
+            .framed-photo {
+                width: 100% !important;
+                border-width: 4px !important;
+                border-bottom-width: 14px !important;
+            }
+            
+            .carousel-item {
+                flex: 0 0 100% !important;
+                padding: 0 8px !important;
+                height: 320px !important;
+            }
+            
+            .carousel-track-container {
+                height: auto !important;
+            }
+        }
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #fff;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            z-index: 2;
+            padding: 0 10px;
+            border-radius: 50%;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        /* Ajuste temporal: mantener altura visible sin tocar el attachment */
+        @media (min-width: 1025px) {
+            .hero-section {
+                background-image: url('foto0.jpg') !important;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="main-center">
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <img class="hero-bg" src="foto0.jpg" alt="Portada boda Ana y Carlos">
+            <div class="hero-overlay"></div>
+            <div class="top-garland">
+                <img src="separador-flores.png" alt="">
+            </div>
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="date date-hidden" aria-hidden="true">15.11.2026</div>
+                    <h1 class="names">Elivel de la Cruz <span class="ampersand">&amp;</span> Samuel Hidalgo</h1>
+                    <blockquote class="quote">
+                        "Y sobre todas estas cosas vestíos de amor,<br />
+                        que es el vínculo perfecto"
+                        <span class="quote-ref">Colosenses 3:14</span>
+                    </blockquote>
+                    <div class="scroll-indicator">
+                        <div class="scroll-mouse">
+                            <div class="scroll-wheel"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content -->
+        <div class="content">
+        <div class="section-divider">
+            <img src="separador-flores.png" alt="">
+        </div>
+        <!-- Countdown -->
+        <section class="countdown-section">
+            <h2 class="section-title">Falta</h2>
+            <div class="countdown-container">
+                <div class="countdown-item">
+                    <div class="countdown-number" id="days">00</div>
+                    <div class="countdown-label">DÍAS</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="hours">00</div>
+                    <div class="countdown-label">HORAS</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="minutes">00</div>
+                    <div class="countdown-label">MINUTOS</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="seconds">00</div>
+                    <div class="countdown-label">SEGUNDOS</div>
+                </div>
+            </div>
+            <div id="guestSection" class="guest-section" style="display:none;">
+                <div id="guestBadge" class="guest-badge">0</div>
+                <h2 class="guest-title">¡Bienvenidos!</h2>
+                <p id="guestSubtitle" class="guest-subtitle" style="display:none;"></p>
+                <div id="guestGreeting" class="guest-greeting"></div>
+            </div>
+            <div class="guest-section">
+                <div class="guest-badge">+1</div>
+                <h2 class="guest-title">¡Bienvenidos!</h2>
+                <p class="guest-subtitle" style="display:block;">Esta invitación es válida para más de un acompañante</p>
+            </div>
+        </section>
+
+        <!-- Ceremony & Celebration -->
+        <div class="section-divider">
+            <img src="separador-flores.png" alt="">
+        </div>
+        <section class="events-section">
+            <div class="events-container events-container-single">
+                <!-- Ceremony & Reception -->
+                <div class="event-card">
+                    <div class="event-icon modern-icon ceremonia-icon">
+                        <svg width="110" height="110" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                            <g class="ceremonia-rings">
+                                <circle cx="24" cy="40" r="16" fill="none" stroke="#53402D" stroke-width="3.5"/>
+                                <circle cx="40" cy="40" r="16" fill="none" stroke="#53402D" stroke-width="3.5"/>
+                                <path d="M16 12 L20 6 L28 6 L32 12 L24 22 Z" fill="none" stroke="#53402D" stroke-width="2.2" stroke-linejoin="round"/>
+                                <path d="M20 6 L24 12 L28 6 M16 12 L32 12" fill="none" stroke="#53402D" stroke-width="1.6" stroke-linejoin="round"/>
+                                <path d="M19 21 L16.5 27" stroke="#53402D" stroke-width="2.2" stroke-linecap="round"/>
+                                <path d="M29 21 L31.5 27" stroke="#53402D" stroke-width="2.2" stroke-linecap="round"/>
+                            </g>
+                            <g class="ceremonia-sparkle">
+                                <path d="M35 4 L36.4 8 L40.4 9.4 L36.4 10.8 L35 14.8 L33.6 10.8 L29.6 9.4 L33.6 8 Z" fill="#53402D"/>
+                            </g>
+                        </svg>
+                    </div>
+                    <h3 class="event-title">Ceremonia y Recepción</h3>
+                    <div class="event-details">
+                        <h4>Día</h4>
+                        <p>Viernes 19 de Marzo, 2027 - 5:00pm</p>
+                        <p class="event-punctuality">Por favor ser puntual</p>
+                    </div>
+                    <div class="event-details">
+                        <h4>Lugar</h4>
+                        <p>Casa Los Pinos</p>
+                        <p class="event-address">Loma de Los Ángeles, La Vega</p>
+                    </div>
+                    <button class="btn-wedding" onclick="openLocation('ceremony')">¿Cómo llegar?</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Photo Gallery -->
+        <div class="section-divider">
+            <img src="separador-flores.png" alt="">
+        </div>
+        <section class="gallery-section">
+            <div class="gallery-container">
+                <h2 class="section-title">Retratos de Nuestro Amor</h2>
+                <p class="section-subtitle">Un minuto, un segundo, un instante que queda en la eternidad</p>
+                
+                <div class="camera-icon modern-icon">
+                    <svg width="110" height="110" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="6" y="20" width="52" height="34" rx="6" fill="#53402D"/>
+                        <path d="M22 20 L26 12 H38 L42 20 Z" fill="#53402D"/>
+                        <circle cx="32" cy="37" r="11" fill="#FFFFFF"/>
+                        <circle cx="32" cy="37" r="7" fill="#53402D"/>
+                        <circle cx="47" cy="27" r="2" fill="#FFFFFF"/>
+                    </svg>
+                </div>
+                <!-- Carrusel -->
+                <div class="carousel-container">
+                  <button class="carousel-btn carousel-prev" id="prevBtn">❮</button>
+                  <div class="carousel-track-container">
+                    <div class="carousel-track" id="carouselTrack">
+                      <div class="carousel-item">
+                        <img class="framed-photo" src="foto1.jpg" alt="Ana y Carlos">
+                      </div>
+                      <div class="carousel-item">
+                        <img class="framed-photo" src="foto2.jpg" alt="Ana y Carlos">
+                      </div>
+                      <div class="carousel-item">
+                        <img class="framed-photo" src="foto3.jpg" alt="Ana y Carlos">
+                      </div>
+                      <div class="carousel-item">
+                        <img class="framed-photo" src="foto4.jpg" alt="Ana y Carlos">
+                      </div>
+                      <div class="carousel-item">
+                        <img class="framed-photo" src="foto5.jpg" alt="Ana y Carlos">
+                      </div>
+                      <div class="carousel-item">
+                        <img class="framed-photo" src="foto6.jpg" alt="Ana y Carlos">
+                      </div>
+                    </div>
+                  </div>
+                  <button class="carousel-btn carousel-next" id="nextBtn">❯</button>
+                </div>
+
+                <div class="carousel-counter">
+                  <span id="currentSlide">1</span> / <span id="totalSlides">6</span> fotos
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Party Information -->
+        <div class="section-divider">
+            <img src="separador-flores.png" alt="">
+        </div>
+        <section class="party-section">
+            <div class="party-container">
+                <h2 class="section-title">Hagamos de esta noche un recuerdo único</h2>
+                <p class="section-subtitle">Aquí algunos detalles a tener en cuenta.</p>
+
+                <div class="party-grid">
+                    <div class="party-card">
+                        <div class="party-icon modern-icon bowtie-icon">
+                            <svg width="110" height="110" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M4 24 L24 32 L4 40 Z" fill="#53402D"/>
+                                <rect x="28" y="26" width="8" height="12" rx="2" fill="#53402D"/>
+                                <path d="M60 24 L40 32 L60 40 Z" fill="#53402D"/>
+                                <circle cx="32" cy="32" r="3" fill="#53402D"/>
+                            </svg>
+                        </div>
+                        <h3>Código de Vestimenta</h3>
+                        <button class="btn-wedding" onclick="showDressCode()">Ver más</button>
+                    </div>
+
+                    <div class="party-card">
+                        <div class="party-icon modern-icon static-icon">
+                            <svg width="110" height="110" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="8" y="12" width="48" height="40" rx="5" fill="#53402D"/>
+                            <rect x="13" y="17" width="38" height="30" rx="2" fill="#FFFFFF"/>
+                            <circle cx="22" cy="26" r="4" fill="#53402D"/>
+                            <path d="M13 42 L25 30 L34 39 L43 27 L51 37 V47 H13 Z" fill="#53402D"/>
+                        </svg>
+                        </div>
+                        <h3>Comparte tus Fotos</h3>
+                        <p>Ayúdanos a capturar cada momento, sube las fotos que tomes durante la fiesta.</p>
+                        <button class="btn-wedding" onclick="sharePhotos()">Subir Fotos</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tips y Notas -->
+        <div class="section-divider">
+            <img src="separador-flores.png" alt="">
+        </div>
+        <section class="tips-section">
+            <div class="tips-container">
+                <h2 class="section-title">Tips y Notas</h2>
+                <div class="tips-icon modern-icon">
+                    <svg width="110" height="110" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="32" cy="32" r="26" fill="none" stroke="#53402D" stroke-width="4"/>
+                        <circle cx="32" cy="23" r="6" fill="#53402D"/>
+                        <path d="M20 45 C20 35 44 35 44 45" fill="#53402D"/>
+                        <line x1="11" y1="53" x2="53" y2="11" stroke="#53402D" stroke-width="4" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <h3 class="tips-note-title">No se permiten niños</h3>
+                <p class="tips-note-text">Para que todos podamos disfrutar al máximo de esta noche, hemos decidido que nuestra boda sea un evento exclusivo para adultos. Agradecemos su comprensión y esperamos que puedan celebrar junto a nosotros esta noche tan especial.</p>
+            </div>
+        </section>
+
+        <!-- Gifts -->
+        <div class="section-divider">
+            <img src="separador-flores.png" alt="">
+        </div>
+        <section class="gifts-section">
+            <div class="gifts-container">
+                <h2 class="section-title">Mesa de Regalos</h2>
+                <p class="section-subtitle">Poder celebrar contigo es nuestro mejor regalo. Pero si deseas hacernos un obsequio, pulsa "Ver más" para ver los datos.</p>
+                
+                <div class="gift-icon modern-icon">
+                    <svg width="110" height="110" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="10" y="26" width="44" height="28" rx="3" fill="#53402D"/>
+                    <rect x="6" y="16" width="52" height="12" rx="3" fill="#53402D"/>
+                    <rect x="29" y="16" width="6" height="38" fill="#FFFFFF"/>
+                    <path d="M32 16 C 22 16 18 6 25 4 C 31 3 32 10 32 16 Z" fill="#53402D"/>
+                    <path d="M32 16 C 42 16 46 6 39 4 C 33 3 32 10 32 16 Z" fill="#53402D"/>
+                </svg>
+                </div>
+
+                <button class="btn-wedding" onclick="showGifts()">Ver más</button>
+            </div>
+        </section>
+
+        <!-- RSVP -->
+        <div class="section-divider">
+            <img src="separador-flores.png" alt="">
+        </div>
+        <section class="rsvp-section">
+            <div class="rsvp-container">
+                <h2 class="section-title">Confirma tu Asistencia</h2>
+                <p class="section-subtitle">Por favor confirma tu asistencia antes del 1 de Marzo de 2027</p>
+                
+                <a href="#" onclick="confirmAttendance(); return false;" class="whatsapp-icon modern-icon" aria-label="Confirmar asistencia por WhatsApp">
+                    <svg width="80" height="80" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="24" cy="24" r="22" fill="#25D366"/>
+                        <path fill="#fff" d="M24 10.5c-7.46 0-13.5 6.04-13.5 13.5 0 2.39.63 4.68 1.82 6.7L10.5 37.5l6.98-1.79a13.44 13.44 0 0 0 6.52 1.66h.01c7.46 0 13.5-6.04 13.5-13.5S31.46 10.5 24 10.5Zm0 24.6h-.01a11.1 11.1 0 0 1-5.66-1.55l-.41-.24-4.14 1.06 1.1-4.03-.27-.42a11.06 11.06 0 0 1-1.71-5.92C13 17.68 17.98 12.7 24 12.7c2.94 0 5.7 1.15 7.78 3.23a10.92 10.92 0 0 1 3.22 7.77c0 6.03-4.98 11-11 11Zm6.04-8.25c-.33-.17-1.96-.97-2.27-1.08-.3-.11-.53-.17-.75.17-.22.33-.86 1.08-1.06 1.3-.2.22-.39.25-.72.08-.33-.17-1.4-.52-2.66-1.65a10 10 0 0 1-1.84-2.3c-.19-.33-.02-.5.15-.67.15-.15.33-.39.5-.58.17-.2.22-.33.33-.55.11-.22.06-.42-.03-.58-.08-.17-.75-1.83-1.03-2.5-.27-.66-.55-.57-.75-.58h-.64c-.22 0-.58.08-.88.42-.3.33-1.16 1.14-1.16 2.77 0 1.64 1.19 3.22 1.36 3.44.17.22 2.34 3.6 5.68 5.05.79.34 1.41.55 1.89.7.79.25 1.51.22 2.08.13.63-.1 1.96-.8 2.24-1.58.28-.77.28-1.44.19-1.58-.08-.14-.3-.22-.63-.39Z"/>
+                    </svg>
+                </a>
+
+                <button class="btn-wedding" onclick="confirmAttendance()">Confirmar Asistencia</button>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <div class="section-divider">
+            <img src="separador-flores.png" alt="">
+        </div>
+        <footer class="footer">
+            <div class="footer-content">
+                <p>Con amor,</p>
+                <h3>Elivel de la Cruz &amp; Samuel Hidalgo</h3>
+                <p class="footer-date">19 de Marzo, 2027</p>
+            </div>
+        </footer>
+        </div>
+
+        <!-- Modal Dress Code -->
+        <div id="dresscodeModal" class="modal-overlay" onclick="closeDressCodeModal(event)">
+            <div class="dresscode-modal" onclick="event.stopPropagation()">
+                <button class="modal-close" onclick="closeDressCodeModal()" aria-label="Cerrar">&times;</button>
+                <h2 class="modal-title-dark">Código de Vestimenta</h2>
+                <p class="modal-text-dark">Formal.</p>
+                <p class="modal-text-dark">Hombres de traje y mujeres con vestidos largos elegantes.</p>
+                <p class="modal-text-dark">Agradecemos evitar los colores blanco, beige y/o champán, reservados para los novios.</p>
+                <div class="dresscode-colors">
+                    <span class="color-dot" style="background:#ffffff;" title="No blanco"></span>
+                    <span class="color-dot" style="background:#e8dcc4;" title="No beige"></span>
+                    <span class="color-dot" style="background:#f0e2b6;" title="No champán"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Mesa de Regalos -->
+        <div id="regalosModal" class="modal-overlay" onclick="closeRegalosModal(event)">
+            <div class="dresscode-modal gift-modal" onclick="event.stopPropagation()">
+                <button class="modal-close" onclick="closeRegalosModal()" aria-label="Cerrar">&times;</button>
+                <h2 class="modal-title-dark">Mesa de Regalos</h2>
+                <p class="gift-intro">Si deseas hacernos un regalo, puedes transferir a cualquiera de estas cuentas:</p>
+
+                <div class="gift-person">
+                    <h3 class="gift-holder">Elivel Mercedes De La Cruz Martínez</h3>
+                    <div class="gift-row">
+                        <div class="gift-row-info"><span class="gift-bank">Banreservas</span><span class="gift-number">9608967876</span></div>
+                        <button class="gift-copy" onclick="copyAccount('9608967876')" aria-label="Copiar cuenta Banreservas">Copiar</button>
+                    </div>
+                    <div class="gift-row">
+                        <div class="gift-row-info"><span class="gift-bank">Alaver</span><span class="gift-number">41-013-001806-5</span></div>
+                        <button class="gift-copy" onclick="copyAccount('41-013-001806-5')" aria-label="Copiar cuenta Alaver">Copiar</button>
+                    </div>
+                    <div class="gift-row">
+                        <div class="gift-row-info"><span class="gift-bank">Cédula</span><span class="gift-number">40214229086</span></div>
+                        <button class="gift-copy" onclick="copyAccount('40214229086')" aria-label="Copiar cédula">Copiar</button>
+                    </div>
+                </div>
+
+                <div class="gift-person">
+                    <h3 class="gift-holder">Samuel Hidalgo</h3>
+                    <div class="gift-row">
+                        <div class="gift-row-info"><span class="gift-bank">Banco BHD · Ahorros RD$</span><span class="gift-number">31133270023</span></div>
+                        <button class="gift-copy" onclick="copyAccount('31133270023')" aria-label="Copiar cuenta BHD">Copiar</button>
+                    </div>
+                    <div class="gift-row">
+                        <div class="gift-row-info"><span class="gift-bank">Documento de identidad</span><span class="gift-number">40237719360</span></div>
+                        <button class="gift-copy" onclick="copyAccount('40237719360')" aria-label="Copiar documento de identidad">Copiar</button>
+                    </div>
+                </div>
+
+                <p class="gift-thanks">Recuerda enviar tu comprobante de pago. ¡Gracias por acompañarnos!</p>
+            </div>
+        </div>
+
+        <!-- Toast notification -->
+        <div id="toast" class="toast">
+            <div id="toastContent"></div>
+        </div>
+
+        <script>
+        (function() {
+            try {
+                if ('caches' in window) {
+                    caches.keys().then(keys => keys.forEach(k => caches.delete(k))).catch(() => {});
+                }
+                if ('serviceWorker' in navigator) {
+                    navigator.serviceWorker.getRegistrations().then(regs => regs.forEach(r => r.unregister())).catch(() => {});
+                }
+            } catch(e) {}
+        })();
+        </script>
+        <script src="JAVAB.js?v=19" defer></script>
+</body>
+</html>
